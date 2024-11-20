@@ -200,7 +200,7 @@ namespace MouseMaze
 
         static void PrintMaze(char[,] maze, int timesExplored)
         {
-            Thread.Sleep(100); // Delay so user can view maze
+            Thread.Sleep(200); // Delay so user can view maze
             Console.Clear(); // Clear old maze
 
             Console.WriteLine("        Rat Maze        ");
