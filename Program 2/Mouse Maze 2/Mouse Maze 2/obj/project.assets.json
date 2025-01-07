@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aaron Wass\\Desktop\\New folder\\Mouse Maze 2\\Mouse Maze 2\\Mouse Maze 2.csproj",
+      "projectUniqueName": "C:\\Users\\Aaron Wass\\Documents\\Uni\\Yr 2 - Semester 1\\Algorithms and Data Structures\\Assignment\\Project 2\\Program 2\\Mouse Maze 2\\Mouse Maze 2\\Mouse Maze 2.csproj",
       "projectName": "Mouse Maze 2",
-      "projectPath": "C:\\Users\\Aaron Wass\\Desktop\\New folder\\Mouse Maze 2\\Mouse Maze 2\\Mouse Maze 2.csproj",
+      "projectPath": "C:\\Users\\Aaron Wass\\Documents\\Uni\\Yr 2 - Semester 1\\Algorithms and Data Structures\\Assignment\\Project 2\\Program 2\\Mouse Maze 2\\Mouse Maze 2\\Mouse Maze 2.csproj",
       "packagesPath": "C:\\Users\\Aaron Wass\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aaron Wass\\Desktop\\New folder\\Mouse Maze 2\\Mouse Maze 2\\obj\\",
+      "outputPath": "C:\\Users\\Aaron Wass\\Documents\\Uni\\Yr 2 - Semester 1\\Algorithms and Data Structures\\Assignment\\Project 2\\Program 2\\Mouse Maze 2\\Mouse Maze 2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

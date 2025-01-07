@@ -10,50 +10,43 @@ namespace MouseMaze
         static void Main(string[] args)
         {
             // Defining the maze
+             char[,] maze =
+             {
+                 {'0','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'},
+                 {'1','0','1','0','0','0','1','1','0','0','0','1','1','1','1','1','1'},
+                 {'1','1','0','0','0','1','1','0','1','1','1','0','0','1','1','1','1'},
+                 {'1','0','1','1','0','0','0','0','1','1','1','1','0','0','1','1','1'},
+                 {'1','1','1','0','1','1','1','1','0','1','1','0','1','1','0','0','1'},
+                 {'1','1','1','0','1','0','0','1','0','1','1','1','1','1','1','1','1'},
+                 {'1','0','0','1','1','0','1','1','1','0','1','0','0','1','0','1','1'},
+                 {'1','0','1','1','1','1','0','0','1','1','1','1','1','1','1','1','1'},
+                 {'1','0','0','1','1','0','1','1','0','1','1','1','1','1','0','1','1'},
+                 {'1','1','1','0','0','0','1','1','0','1','1','0','0','0','0','0','1'},
+                 {'1','0','0','1','1','1','1','1','0','0','0','1','1','1','1','0','1'},
+                 {'1','0','1','0','0','1','1','1','1','1','0','1','1','1','1','0','E'},
+                 {'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'}
+             };
+
+            /* Second test maze 
             char[,] maze =
             {
-                {'0','1','1','1','1','1','1','1','1','1','1','1'},
-                {'1','0','1','1','0','1','1','0','0','1','0','1'},
-                {'1','1','0','1','0','1','0','1','1','0','1','1'},
-                {'1','1','1','0','1','0','1','1','1','1','0','1'},
-                {'1','0','0','1','1','0','1','0','1','0','1','1'},
-                {'1','1','1','1','1','0','1','1','0','1','0','1'},
-                {'1','0','1','0','0','1','1','0','1','1','0','1'},
-                {'1','1','0','1','1','1','1','0','1','0','1','1'},
-                {'1','0','1','0','0','0','1','1','1','1','0','1'},
-                {'1','0','1','1','1','1','0','1','1','1','0','1'},
-                {'1','1','1','0','1','1','0','1','0','0','0','1'},
-                {'1','0','0','1','0','0','1','0','1','1','1','E'},
-                {'1','1','1','1','1','1','1','1','1','1','1','1'}
-            };
-            
-            /*Second test maze 
-            char[,] maze =
-            {
-                {'0','1','1','1','1','1','1','1','1','1','1','1','1'},
-                {'1','0','1','1','0','1','1','0','0','0','0','0','E'},
-                {'1','1','0','1','0','1','0','1','1','0','1','1','1'},
-                {'1','1','1','0','1','0','1','1','1','0','0','0','1'},
-                {'1','0','1','0','1','0','1','1','0','1','1','1','1'},
-                {'1','0','1','0','1','1','0','1','1','0','0','1','1'},
-                {'1','0','1','1','0','1','1','1','1','1','1','0','1'},
-                {'1','1','0','1','1','0','1','0','0','1','1','0','1'},
-                {'1','1','1','0','1','0','1','1','1','0','0','1','1'},
-                {'1','0','0','1','1','0','1','0','0','1','1','1','1'},
-                {'1','1','1','0','1','0','1','1','1','0','0','1','1'},
-                {'1','1','0','1','0','1','1','0','1','1','1','0','1'},
-                {'1','0','1','1','0','1','0','1','1','0','0','1','1'},
-                {'1','1','0','1','1','1','0','1','0','1','1','1','1'},
-                {'1','0','1','0','0','1','1','0','1','1','0','1','1'},
-                {'1','0','1','1','1','0','0','1','0','0','1','0','1'},
-                {'1','1','1','1','1','1','1','1','1','1','1','1','1'}
+                {'0','1','1','1','1','1','1','1'},
+                {'1','0','0','0','0','0','0','1'},
+                {'1','1','1','1','1','1','0','1'},
+                {'1','0','0','0','0','0','0','1'},
+                {'1','0','1','1','1','1','1','1'},
+                {'1','0','0','0','0','0','0','1'},
+                {'1','1','1','1','1','1','0','1'},
+                {'1','0','0','0','0','0','0','1'},
+                {'1','0','1','1','1','1','1','1'},
+                {'1','0','0','0','0','0','0','E'},
+                {'1','1','1','1','1','1','1','1'}
             }; */
 
             bool[,] visited = new bool[maze.GetLength(0), maze.GetLength(1)]; // 2D array to track if a spot has been visted
             int timesExplored = 1; // Times rat has run around maze counter
             bool endFound;
             Stack<point> moves = new Stack<point>(); // Track of moves
-            Stack<point> routeToExit = new Stack<point>(); 
             List<string> allRoutes = new List<string>(); // List of all paths to exit
             string routeTaken = null;
    
@@ -65,7 +58,6 @@ namespace MouseMaze
                 maze[0, 0] = '0';
                 PrintMaze(maze, timesExplored);
                 moves.Clear();
-                routeToExit.Clear();
                 position = new point { X = 0, Y = 0, count = 1, positionChecking = timesExplored };
                 endFound = false;
 
@@ -97,7 +89,8 @@ namespace MouseMaze
                     maze[position.X, position.Y] = 'E'; 
                     Console.Write("End Found\n");
 
-                    routeTaken = BuildRouteToExit(moves, routeToExit);
+                    // Get route taken to exit and check if that route has already been discovered
+                    routeTaken = BuildRouteToExit(moves);
                     if (!allRoutes.Contains(routeTaken)) allRoutes.Add(routeTaken);
                 }
 
@@ -111,6 +104,8 @@ namespace MouseMaze
             else Console.WriteLine("\nThere is no exit");
         }
 
+
+
         public class point
         {
             public int X { get; set; }
@@ -118,7 +113,6 @@ namespace MouseMaze
             public int count { get; set; }
             public int positionChecking { get; set; }
         }
-
         static point FindNextMove(point position, char[,] maze, Stack<point> moves, int timesExplored, bool[,] visitedPositions)
         {
             bool pathFound = false;
@@ -200,7 +194,7 @@ namespace MouseMaze
 
         static void PrintMaze(char[,] maze, int timesExplored)
         {
-            Thread.Sleep(200); // Delay so user can view maze
+            Thread.Sleep(450); // Delay so user can view maze
             Console.Clear(); // Clear old maze
 
             Console.WriteLine("        Rat Maze        ");
@@ -228,14 +222,11 @@ namespace MouseMaze
             }
         }
 
-        static string BuildRouteToExit(Stack<point> moves, Stack<point> routeToExit)
+        static string BuildRouteToExit(Stack<point> moves)
         {
-            string routeTaken = null;
+            string routeTaken = "End";
 
-            foreach (point p in moves) routeToExit.Push(p); // Get moves in correct order
-            foreach (point p in routeToExit) routeTaken += "(" + (p.Y + 1) + "," + (p.X + 1) + ")" + " --> "; // Display route to exit
-
-            routeTaken += "End";
+            foreach (point p in moves) routeTaken = "(" + (p.Y + 1) + "," + (p.X + 1) + ")" + " --> " + routeTaken; // Display route to exit
 
             return routeTaken;
         }
@@ -251,7 +242,7 @@ namespace MouseMaze
             {
                 Console.WriteLine(r + "\n\n"); // Display path
 
-                if (shortestRoute == null || r.Length < shortestRoute.Length) shortestRoute = r; // Find which is the chortest path based on length of string
+                if (shortestRoute == null || r.Length < shortestRoute.Length) shortestRoute = r; // Find which is the chortest path 
             }
 
             Console.WriteLine("Shortest path to the exit:");
