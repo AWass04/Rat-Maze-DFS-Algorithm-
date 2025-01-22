@@ -20,3 +20,5 @@ All criteria in my program has been met.
 ## Additional features
 Although not required by the criteria, I have included an extra maze to show extra functionality of my maze and made it so it will regularly print the maze to clearly show what is happening. Plus, it will display what the shortest path to the exit is.
 
+## Language Used
+C#
